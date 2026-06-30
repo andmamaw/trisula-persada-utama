@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue-950:  #0a1628;
+  --color-blue-900:  #0f2040;
+  --color-blue-800:  #1e3a6e;
+  --color-blue-700:  #1d4ed8;
+  --color-blue-600:  #2563eb;
+  --color-blue-500:  #3b82f6;
+  --color-blue-100:  #dbeafe;
+  --color-slate-900: #0f172a;
+  --color-slate-700: #334155;
+  --color-slate-500: #64748b;
+  --color-slate-200: #e2e8f0;
+  --color-slate-100: #f1f5f9;
+  --color-slate-50:  #f8fafc;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body);
+  background: #ffffff;
+  color: #0f172a;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+/* ── Typography ── */
+.heading-xl {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.heading-lg {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+/* ── Gradient text ── */
+.text-gradient {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb 60%, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-white {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: #1d4ed8;
+  box-shadow: 0 8px 24px rgba(37,99,235,0.4);
+  transform: translateY(-1px);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+}
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  background: transparent;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1.5px solid #2563eb;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+.btn-outline-dark:hover {
+  background: #eff6ff;
+}
+
+/* ── Card ── */
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 12px 40px rgba(37,99,235,0.1);
+  transform: translateY(-4px);
+}
+.card-flat {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.badge-blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.badge-white {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ── Hero landscape scene CSS ── */
+.hero-scene {
+  background:
+    linear-gradient(180deg,
+      #0a1628 0%,
+      #0f2040 20%,
+      #1a3a6e 45%,
+      #1e5a3a 70%,
+      #1a4a2e 100%
+    );
+}
+
+/* ── Section utilities ── */
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  border-radius: 2px;
+}
+
+/* ── Animations ── */
+@keyframes float-up {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -24; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.anim-float    { animation: float-up 5s ease-in-out infinite; }
+.anim-float-d1 { animation: float-up 5s ease-in-out 1s infinite; }
+.anim-float-d2 { animation: float-up 5s ease-in-out 2s infinite; }
+.anim-pulse    { animation: pulse-dot 2s ease-in-out infinite; }
+.anim-dash     { animation: dash-flow 1.5s linear infinite; }
+
+/* ── Icon box ── */
+.icon-box {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  background: #eff6ff;
+  color: #2563eb;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+.icon-box-lg {
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* ── Photo placeholder gradients ── */
+.photo-road    { background: linear-gradient(135deg, #1e3a5f 0%, #2d6a4f 50%, #1b4332 100%); }
+.photo-mining  { background: linear-gradient(135deg, #7c3d00 0%, #92400e 40%, #451a03 100%); }
+.photo-port    { background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #1e3a5f 100%); }
+.photo-forest  { background: linear-gradient(135deg, #14532d 0%, #166534 50%, #052e16 100%); }
+.photo-urban   { background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #1e1b4b 100%); }
+.photo-coastal { background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 40%, #0a3d6b 100%); }
+.photo-hero    { background: linear-gradient(160deg, #0a1628 0%, #0f2040 25%, #1a3a6e 55%, #1e5a3a 80%, #0f3020 100%); }
