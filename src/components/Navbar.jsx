@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
+import logoMark from '../assets/brand/logo-mark-dark.png';
 
 const links = [
-  { name: 'Beranda',   href: '#beranda' },
-  { name: 'Tentang Kami', href: '#tentang' },
-  { name: 'Layanan',   href: '#layanan' },
-  { name: 'Teknologi', href: '#teknologi' },
-  { name: 'Proyek',    href: '#proyek' },
-  { name: 'Kontak',    href: '#kontak' },
+  { name: 'Beranda',     href: '#beranda' },
+  { name: 'Layanan',     href: '#layanan' },
+  { name: 'Tentang Kami',href: '#tentang' },
+  { name: 'Alur Kerja',  href: '#alur-kerja' },
+  { name: 'Proyek',      href: '#proyek' },
+  { name: 'Kontak',      href: '#kontak' },
 ];
 
 export default function Navbar() {
@@ -34,9 +35,9 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="fixed top-0 inset-x-0 z-50"
       style={{
-        background: scrolled ? '#fff' : 'rgba(255,255,255,0.96)',
-        borderBottom: scrolled ? '1px solid #e2e8f0' : '1px solid transparent',
-        boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.06)' : 'none',
+        background: scrolled ? '#fff' : 'rgba(255,255,255,0.97)',
+        borderBottom: scrolled ? '1px solid #e1e9e4' : '1px solid transparent',
+        boxShadow: scrolled ? '0 2px 20px rgba(13,40,24,0.07)' : 'none',
         transition: 'all 0.3s ease',
       }}
     >
@@ -49,20 +50,13 @@ export default function Navbar() {
             onClick={(e) => go(e, '#beranda')}
             className="flex items-center gap-3 no-underline group"
           >
-            <div className="relative w-10 h-10 flex items-center justify-center">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <rect width="40" height="40" rx="10" fill="#eff6ff"/>
-                <path d="M20 7 L31 27 H9 Z" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinejoin="round"/>
-                <path d="M20 14 L27 27 H13 Z" fill="#dbeafe" stroke="#2563eb" strokeWidth="1.2" strokeLinejoin="round"/>
-                <circle cx="20" cy="7" r="2" fill="#2563eb"/>
-              </svg>
-            </div>
+            <img src={logoMark} alt="Trisula Persada Utama" className="h-9 w-9 lg:h-10 lg:w-10 object-contain" />
             <div>
-              <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: 14, color: '#0f172a', letterSpacing: '0.05em', lineHeight: 1.2 }}>
-                PT TRISULA <span style={{ color: '#2563eb' }}>PERSADA UTAMA</span>
+              <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: 14, color: '#14201a', letterSpacing: '0.04em', lineHeight: 1.2 }}>
+                TRISULA <span style={{ color: '#226138' }}>PERSADA UTAMA</span>
               </p>
-              <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 9, color: '#94a3b8', letterSpacing: '0.2em', textTransform: 'uppercase', marginTop: 2 }}>
-                Geodesy & Geospatial Solution
+              <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 9, color: '#8aa393', letterSpacing: '0.18em', textTransform: 'uppercase', marginTop: 2 }}>
+                Solusi Alat Geodesi
               </p>
             </div>
           </a>
@@ -74,10 +68,10 @@ export default function Navbar() {
                 key={l.name}
                 href={l.href}
                 onClick={(e) => go(e, l.href)}
-                className="relative px-3.5 py-2 text-[13.5px] font-medium text-slate-600 hover:text-blue-600 transition-colors duration-200 no-underline group"
+                className="relative px-3.5 py-2 text-[13.5px] font-medium text-slate-700 hover:text-green-700 transition-colors duration-200 no-underline group"
               >
                 {l.name}
-                <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] rounded-full bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] rounded-full bg-green-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
               </a>
             ))}
           </nav>
@@ -85,24 +79,24 @@ export default function Navbar() {
           {/* Right side */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+628111200330"
-              className="flex items-center gap-2 text-[13px] font-medium text-slate-600 hover:text-blue-600 transition-colors no-underline"
+              href="tel:+6208138868196"
+              className="flex items-center gap-2 text-[13px] font-medium text-slate-700 hover:text-green-700 transition-colors no-underline"
             >
               <Phone size={14} />
-              +62 811 1200 3300
+              0813-8868-196
             </a>
             <a
               href="#kontak"
               onClick={(e) => go(e, '#kontak')}
               className="btn-primary text-[13px]"
             >
-              Konsultasi Gratis
+              Hubungi Kami
             </a>
           </div>
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden p-2 text-slate-600 hover:text-blue-600 transition-colors"
+            className="lg:hidden p-2 text-slate-700 hover:text-green-700 transition-colors"
             onClick={() => setOpen(!open)}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
@@ -118,7 +112,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            style={{ background: '#fff', borderTop: '1px solid #e2e8f0', boxShadow: '0 8px 20px rgba(0,0,0,0.08)' }}
+            style={{ background: '#fff', borderTop: '1px solid #e1e9e4', boxShadow: '0 8px 20px rgba(13,40,24,0.1)' }}
           >
             <div className="px-5 py-4 space-y-1 max-w-7xl mx-auto">
               {links.map((l, i) => (
@@ -129,7 +123,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.04 }}
-                  className="block py-3 px-4 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all no-underline"
+                  className="block py-3 px-4 text-sm font-medium text-slate-700 hover:text-green-700 hover:bg-green-50 rounded-xl transition-all no-underline"
                 >
                   {l.name}
                 </motion.a>
@@ -140,7 +134,7 @@ export default function Navbar() {
                   onClick={(e) => go(e, '#kontak')}
                   className="btn-primary w-full justify-center"
                 >
-                  Konsultasi Gratis
+                  Hubungi Kami
                 </a>
               </div>
             </div>

@@ -3,9 +3,11 @@ import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
 import WhyUsSection from './components/WhyUsSection';
 import StatsSection from './components/StatsSection';
-import ProjectsSection from './components/ProjectsSection';
+import AboutSection from './components/AboutSection';
 import WorkflowSection from './components/WorkflowSection';
-import TestimonialsSection from './components/TestimonialsSection';
+import ProjectsSection from './components/ProjectsSection';
+import GallerySection from './components/GallerySection';
+import ClientsSection from './components/ClientsSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 
@@ -17,9 +19,11 @@ export default function App() {
       <ServicesSection />
       <WhyUsSection />
       <StatsSection />
-      <ProjectsSection />
+      <AboutSection />
       <WorkflowSection />
-      <TestimonialsSection />
+      <ProjectsSection />
+      <GallerySection />
+      <ClientsSection />
       <CTASection />
       <Footer />
     </div>

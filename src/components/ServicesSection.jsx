@@ -1,75 +1,64 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import sewaPhoto from '../assets/photos/layanan-sewa.jpg';
+import jualBeliPhoto from '../assets/photos/layanan-jualbeli.jpg';
+import servisPhoto from '../assets/photos/equipment-closeup.jpg';
+import kalibrasiPhoto from '../assets/photos/office.jpg';
 
 const services = [
   {
-    title: 'Survei Topografi',
-    desc: 'Pengukuran detail permukaan tanah dengan presisi tinggi untuk perencanaan konstruksi, pertambangan, dan infrastruktur.',
+    title: 'Sewa Alat Geodesi',
+    desc: 'Layanan penyewaan instrumen topografi untuk kebutuhan proyek jangka pendek maupun jangka panjang dengan armada alat yang terawat, terkalibrasi, dan siap pakai di lapangan.',
+    photo: sewaPhoto,
     icon: (
       <svg viewBox="0 0 32 32" className="w-7 h-7" fill="none">
-        <path d="M4 24 L10 14 L16 18 L22 10 L28 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M4 24 L28 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
-        <circle cx="10" cy="14" r="2" fill="currentColor" opacity="0.7"/>
-        <circle cx="22" cy="10" r="2" fill="currentColor" opacity="0.7"/>
+        <path d="M16 4 L16 28" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        <path d="M9 10 L23 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        <path d="M6 10 L9 5 L12 10 Z" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
+        <path d="M20 10 L23 5 L26 10 Z" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
+        <path d="M6 10 Q6 16 12 16" stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.5"/>
+        <path d="M26 10 Q26 16 20 16" stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.5"/>
+        <path d="M10 28 L22 28" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
-    title: 'GNSS & Total Station',
-    desc: 'Teknologi positioning satelit akurasi centimeter untuk referensi geodetik, kontrol survei, dan pengukuran presisi.',
+    title: 'Jual & Beli Alat',
+    desc: 'Penyediaan instrumen geodesi dan topografi (Total Station, Theodolite, GNSS/GPS Geodetik, Auto Level, dll) dengan jaminan kualitas terbaik. Kami juga melayani pembelian alat bekas dengan valuasi harga yang transparan dan kompetitif.',
+    photo: jualBeliPhoto,
     icon: (
       <svg viewBox="0 0 32 32" className="w-7 h-7" fill="none">
-        <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="1.5" opacity="0.4"/>
-        <circle cx="16" cy="16" r="6" stroke="currentColor" strokeWidth="1.5" opacity="0.6"/>
-        <circle cx="16" cy="16" r="2.5" fill="currentColor"/>
-        <line x1="16" y1="4" x2="16" y2="8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="16" y1="24" x2="16" y2="28" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="4" y1="16" x2="8" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="24" y1="16" x2="28" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M4 10 L28 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        <path d="M6 10 L8 22 Q8 24 10 24 L22 24 Q24 24 24 22 L26 10" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinejoin="round"/>
+        <path d="M11 10 Q11 5 16 5 Q21 5 21 10" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+        <circle cx="16" cy="17" r="3.2" stroke="currentColor" strokeWidth="1.3" fill="none"/>
+        <path d="M16 15.3 L16 18.7 M14.6 16 L17.4 18" stroke="currentColor" strokeWidth="1" opacity="0.7"/>
       </svg>
     ),
   },
   {
-    title: 'Fotogrametri UAV',
-    desc: 'Pemetaan udara resolusi tinggi 2 cm/px menghasilkan orthophoto, DTM, DSM, dan model 3D area proyek.',
+    title: 'Servis (Perbaikan)',
+    desc: 'Penanganan perbaikan alat yang mengalami kerusakan fisik maupun sistem. Kami menawarkan biaya servis yang masuk akal dengan estimasi waktu dan rincian komponen yang 100% transparan.',
+    photo: servisPhoto,
     icon: (
       <svg viewBox="0 0 32 32" className="w-7 h-7" fill="none">
-        <rect x="12" y="13" width="8" height="6" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-        <line x1="12" y1="15" x2="6" y2="11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <line x1="20" y1="15" x2="26" y2="11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <line x1="12" y1="17" x2="6" y2="21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <line x1="20" y1="17" x2="26" y2="21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <ellipse cx="6" cy="11" rx="4" ry="1.5" stroke="currentColor" strokeWidth="1"/>
-        <ellipse cx="26" cy="11" rx="4" ry="1.5" stroke="currentColor" strokeWidth="1"/>
-        <ellipse cx="6" cy="21" rx="4" ry="1.5" stroke="currentColor" strokeWidth="1"/>
-        <ellipse cx="26" cy="21" rx="4" ry="1.5" stroke="currentColor" strokeWidth="1"/>
-        <line x1="16" y1="19" x2="16" y2="28" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeDasharray="2 2" opacity="0.5"/>
+        <path d="M20 7 a5 5 0 0 0 -6.9 6.9 L6 21 a2.2 2.2 0 0 0 3 3 l7.1 -7.1 A5 5 0 0 0 25 10 l-3.5 3.5 -2 -2 Z" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinejoin="round"/>
       </svg>
     ),
   },
   {
-    title: 'Hidro-Oseanografi',
-    desc: 'Survei kedalaman laut dengan single/multibeam echosounder untuk pelabuhan, reklamasi, dan infrastruktur maritim.',
+    title: 'Kalibrasi',
+    desc: 'Penyesuaian dan pengujian akurasi instrumen ukur agar selalu presisi dan memenuhi standar operasional proyek-proyek besar.',
+    photo: kalibrasiPhoto,
     icon: (
       <svg viewBox="0 0 32 32" className="w-7 h-7" fill="none">
-        <path d="M4 13 Q10 9 16 13 Q22 17 28 13" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"/>
-        <path d="M4 18 Q10 14 16 18 Q22 22 28 18" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.6"/>
-        <path d="M4 23 Q10 19 16 23 Q22 27 28 23" stroke="currentColor" strokeWidth="1" fill="none" strokeLinecap="round" opacity="0.3"/>
-        <line x1="16" y1="4" x2="16" y2="13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="2 2" opacity="0.5"/>
-        <circle cx="16" cy="4" r="2" fill="currentColor" opacity="0.6"/>
-      </svg>
-    ),
-  },
-  {
-    title: 'GIS & Penginderaan Jauh',
-    desc: 'Pengolahan data spasial, pembuatan peta tematik berbasis SIG, dan analisis citra satelit multispektral.',
-    icon: (
-      <svg viewBox="0 0 32 32" className="w-7 h-7" fill="none">
-        <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" strokeWidth="1.5" opacity="0.4"/>
-        <polygon points="4,16 14,8 22,14 28,10 28,28 4,28" fill="currentColor" opacity="0.1" stroke="currentColor" strokeWidth="1"/>
-        <circle cx="22" cy="10" r="2.5" fill="currentColor" opacity="0.8"/>
-        <circle cx="10" cy="14" r="2" fill="currentColor" opacity="0.6"/>
-        <circle cx="18" cy="20" r="1.5" fill="currentColor" opacity="0.5"/>
+        <circle cx="16" cy="16" r="11" stroke="currentColor" strokeWidth="1.5" opacity="0.5"/>
+        <circle cx="16" cy="16" r="2.4" fill="currentColor"/>
+        <line x1="16" y1="6" x2="16" y2="9.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        <line x1="16" y1="22.5" x2="16" y2="26" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        <line x1="6" y1="16" x2="9.5" y2="16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        <line x1="22.5" y1="16" x2="26" y2="16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        <path d="M16 16 L21 12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -86,7 +75,7 @@ const cardV = {
 
 export default function ServicesSection() {
   return (
-    <section id="layanan" style={{ background: '#f8fafc' }} className="py-20 lg:py-28">
+    <section id="layanan" style={{ background: '#f7faf8' }} className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
 
         {/* Header */}
@@ -100,12 +89,12 @@ export default function ServicesSection() {
           <p className="section-label mb-3">Layanan Kami</p>
           <div className="section-divider mx-auto mb-5" />
           <h2 className="heading-lg text-slate-900 mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
-            Solusi Lengkap Kebutuhan
+            Spektrum Layanan
             <br />
-            <span className="text-gradient">Survei dan Pemetaan</span>
+            <span className="text-gradient">Alat Topografi & Geodesi</span>
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-base leading-relaxed">
-            Kami menyediakan berbagai layanan survei dan pemetaan berbasis teknologi terkini untuk menghasilkan data yang akurat, cepat dan dapat diandalkan.
+            Sebagai penyedia solusi menyeluruh, kami menawarkan berbagai layanan untuk menunjang kebutuhan proyek pemetaan dan pengukuran Anda.
           </p>
         </motion.div>
 
@@ -115,25 +104,31 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
         >
           {services.map((s, i) => (
             <motion.div
               key={i}
               variants={cardV}
-              className="card p-6 group cursor-pointer relative overflow-hidden"
+              className="card overflow-hidden group cursor-pointer"
             >
-              <div className="icon-box mb-5 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                {s.icon}
+              <div className="relative h-44 overflow-hidden">
+                <img src={s.photo} alt={s.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(13,40,24,0.1) 0%, rgba(13,40,24,0.55) 100%)' }}/>
+                <div className="absolute bottom-4 left-5 icon-box" style={{ background: 'rgba(255,255,255,0.92)' }}>
+                  {s.icon}
+                </div>
               </div>
-              <h3 className="font-display font-semibold text-slate-900 text-[15px] mb-2.5 leading-snug">
-                {s.title}
-              </h3>
-              <p className="text-slate-500 text-[13px] leading-relaxed">
-                {s.desc}
-              </p>
-              <div className="mt-4 flex items-center gap-1 text-blue-600 text-[13px] font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
-                Selengkapnya <ArrowRight size={13}/>
+              <div className="p-6">
+                <h3 className="font-display font-semibold text-slate-900 text-lg mb-2.5">
+                  {s.title}
+                </h3>
+                <p className="text-slate-500 text-[13.5px] leading-relaxed">
+                  {s.desc}
+                </p>
+                <div className="mt-4 flex items-center gap-1 text-green-700 text-[13px] font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
+                  Selengkapnya <ArrowRight size={13}/>
+                </div>
               </div>
             </motion.div>
           ))}
