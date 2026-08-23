@@ -10,6 +10,7 @@ import GallerySection from './components/GallerySection';
 import ClientsSection from './components/ClientsSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
       <ClientsSection />
       <CTASection />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

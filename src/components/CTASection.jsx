@@ -122,7 +122,7 @@ export default function CTASection() {
 
             <div className="mt-5 pt-5" style={{ borderTop: '1px solid #eef4f0' }}>
               <div className="grid grid-cols-1 gap-3">
-                <a href="tel:+6208138868196" className="flex items-center gap-2 text-xs font-medium text-slate-600 hover:text-green-700 transition-colors">
+                <a href="tel:+628138868196" className="flex items-center gap-2 text-xs font-medium text-slate-600 hover:text-green-700 transition-colors">
                   <Phone size={13} style={{ color: '#226138' }}/> 0813-8868-196 (Telp/WhatsApp)
                 </a>
                 <a href="mailto:trisulasurveyindonesia@gmail.com" className="flex items-center gap-2 text-xs font-medium text-slate-600 hover:text-green-700 transition-colors">

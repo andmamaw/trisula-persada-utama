@@ -79,7 +79,7 @@ export default function Navbar() {
           {/* Right side */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+6208138868196"
+              href="tel:+628138868196"
               className="flex items-center gap-2 text-[13px] font-medium text-slate-700 hover:text-green-700 transition-colors no-underline"
             >
               <Phone size={14} />
