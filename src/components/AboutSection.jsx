@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Target, Compass } from 'lucide-react';
 import aboutPhoto from '../assets/photos/about.jpg';
+import officePhoto from '../assets/photos/office.jpg';
 
 const misi = [
   {
@@ -33,12 +34,20 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.7 }}
-            className="relative"
+            className="relative pb-8 pr-8 sm:pb-10 sm:pr-10"
           >
             <div className="rounded-2xl overflow-hidden" style={{ boxShadow: '0 24px 60px rgba(13,40,24,0.15)' }}>
               <img src={aboutPhoto} alt="Tim Trisula Persada Utama bersama BPN" className="w-full h-[420px] object-cover"/>
             </div>
             <p className="mt-3 text-xs italic text-slate-400">Tim Trisula Persada Utama bersama Badan Pertanahan Nasional (BPN)</p>
+
+            {/* Office accent photo */}
+            <div
+              className="absolute bottom-0 right-0 w-36 sm:w-48 rounded-xl overflow-hidden"
+              style={{ boxShadow: '0 16px 40px rgba(13,40,24,0.25)', border: '4px solid #fff' }}
+            >
+              <img src={officePhoto} alt="Kantor Trisula Persada Utama" className="w-full h-28 sm:h-36 object-cover"/>
+            </div>
           </motion.div>
 
           <motion.div

@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import sewaPhoto from '../assets/photos/layanan-sewa.jpg';
 import jualBeliPhoto from '../assets/photos/layanan-jualbeli.jpg';
-import servisPhoto from '../assets/photos/equipment-closeup.jpg';
-import kalibrasiPhoto from '../assets/photos/office.jpg';
+import servisPhoto from '../assets/photos/servis-repair.jpg';
+import kalibrasiPhoto from '../assets/photos/kalibrasi-detail.jpg';
 
 const services = [
   {
