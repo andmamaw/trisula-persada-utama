@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { MapPin, ArrowUpRight } from 'lucide-react';
+import TiltCard from './ui/TiltCard';
 import project1 from '../assets/photos/project-1.jpg';
 import project2 from '../assets/photos/project-2.jpg';
 import project3 from '../assets/photos/project-3.jpg';
@@ -84,39 +85,40 @@ export default function ProjectsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="card overflow-hidden group cursor-pointer"
             >
-              <div className="relative h-56 overflow-hidden">
-                {p.photo ? (
-                  <>
-                    <img src={p.photo} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(13,40,24,0.05) 0%, rgba(13,40,24,0.6) 100%)' }}/>
-                  </>
-                ) : (
-                  <PlaceholderVisual />
-                )}
-                <div className="absolute top-4 left-4">
-                  <span className="text-[10px] font-semibold px-2.5 py-1 rounded-lg" style={{ background: 'rgba(255,255,255,0.92)', color: '#1a4a2e' }}>
-                    {p.type}
-                  </span>
+              <TiltCard className="card overflow-hidden group cursor-pointer">
+                <div className="relative h-56 overflow-hidden">
+                  {p.photo ? (
+                    <>
+                      <img src={p.photo} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(13,40,24,0.05) 0%, rgba(13,40,24,0.6) 100%)' }}/>
+                    </>
+                  ) : (
+                    <PlaceholderVisual />
+                  )}
+                  <div className="absolute top-4 left-4">
+                    <span className="text-[10px] font-semibold px-2.5 py-1 rounded-lg" style={{ background: 'rgba(255,255,255,0.92)', color: '#1a4a2e' }}>
+                      {p.type}
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <span className="font-mono text-[10px] text-white/80">{p.year}</span>
+                  </div>
+                  <div className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-white/15 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <ArrowUpRight size={14} className="text-white"/>
+                  </div>
                 </div>
-                <div className="absolute top-4 right-4">
-                  <span className="font-mono text-[10px] text-white/80">{p.year}</span>
+                <div className="p-5">
+                  <h3 className="font-display font-semibold text-slate-900 text-[15px] mb-2 leading-snug">
+                    {p.title}
+                  </h3>
+                  <div className="flex items-center gap-1.5 mb-1.5">
+                    <MapPin size={11} className="text-slate-400"/>
+                    <span className="text-xs text-slate-500">{p.location}</span>
+                  </div>
+                  <p className="text-xs text-slate-400">Klien: {p.client}</p>
                 </div>
-                <div className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-white/15 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <ArrowUpRight size={14} className="text-white"/>
-                </div>
-              </div>
-              <div className="p-5">
-                <h3 className="font-display font-semibold text-slate-900 text-[15px] mb-2 leading-snug">
-                  {p.title}
-                </h3>
-                <div className="flex items-center gap-1.5 mb-1.5">
-                  <MapPin size={11} className="text-slate-400"/>
-                  <span className="text-xs text-slate-500">{p.location}</span>
-                </div>
-                <p className="text-xs text-slate-400">Klien: {p.client}</p>
-              </div>
+              </TiltCard>
             </motion.article>
           ))}
         </div>

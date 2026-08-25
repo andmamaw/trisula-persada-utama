@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import TiltCard from './ui/TiltCard';
 import sewaPhoto from '../assets/photos/layanan-sewa.jpg';
 import jualBeliPhoto from '../assets/photos/layanan-jualbeli.jpg';
 import servisPhoto from '../assets/photos/servis-repair.jpg';
@@ -107,29 +108,27 @@ export default function ServicesSection() {
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
         >
           {services.map((s, i) => (
-            <motion.div
-              key={i}
-              variants={cardV}
-              className="card overflow-hidden group cursor-pointer"
-            >
-              <div className="relative h-44 overflow-hidden">
-                <img src={s.photo} alt={s.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(13,40,24,0.1) 0%, rgba(13,40,24,0.55) 100%)' }}/>
-                <div className="absolute bottom-4 left-5 icon-box" style={{ background: 'rgba(255,255,255,0.92)' }}>
-                  {s.icon}
+            <motion.div key={i} variants={cardV}>
+              <TiltCard className="card overflow-hidden group cursor-pointer">
+                <div className="relative h-44 overflow-hidden">
+                  <img src={s.photo} alt={s.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(13,40,24,0.1) 0%, rgba(13,40,24,0.55) 100%)' }}/>
+                  <div className="absolute bottom-4 left-5 icon-box" style={{ background: 'rgba(255,255,255,0.92)' }}>
+                    {s.icon}
+                  </div>
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-display font-semibold text-slate-900 text-lg mb-2.5">
-                  {s.title}
-                </h3>
-                <p className="text-slate-500 text-[13.5px] leading-relaxed">
-                  {s.desc}
-                </p>
-                <div className="mt-4 flex items-center gap-1 text-green-700 text-[13px] font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
-                  Selengkapnya <ArrowRight size={13}/>
+                <div className="p-6">
+                  <h3 className="font-display font-semibold text-slate-900 text-lg mb-2.5">
+                    {s.title}
+                  </h3>
+                  <p className="text-slate-500 text-[13.5px] leading-relaxed">
+                    {s.desc}
+                  </p>
+                  <div className="mt-4 flex items-center gap-1 text-green-700 text-[13px] font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
+                    Selengkapnya <ArrowRight size={13}/>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </motion.div>

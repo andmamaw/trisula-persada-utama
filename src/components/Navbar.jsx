@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 import logoMark from '../assets/brand/logo-mark-dark.png';
+import Magnetic from './ui/Magnetic';
 
 const links = [
   { name: 'Beranda',     href: '#beranda' },
@@ -85,13 +86,15 @@ export default function Navbar() {
               <Phone size={14} />
               0813-8868-196
             </a>
-            <a
-              href="#kontak"
-              onClick={(e) => go(e, '#kontak')}
-              className="btn-primary text-[13px]"
-            >
-              Hubungi Kami
-            </a>
+            <Magnetic>
+              <a
+                href="#kontak"
+                onClick={(e) => go(e, '#kontak')}
+                className="btn-primary text-[13px]"
+              >
+                Hubungi Kami
+              </a>
+            </Magnetic>
           </div>
 
           {/* Mobile toggle */}

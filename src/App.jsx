@@ -11,10 +11,15 @@ import ClientsSection from './components/ClientsSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import ScrollProgress from './components/ui/ScrollProgress';
+import useLenis from './hooks/useLenis';
 
 export default function App() {
+  useLenis();
+
   return (
     <div className="bg-white text-slate-900 overflow-x-hidden">
+      <ScrollProgress />
       <Navbar />
       <HeroSection />
       <ServicesSection />
