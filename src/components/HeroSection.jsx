@@ -1,9 +1,11 @@
-import { useRef } from 'react';
+import { useRef, lazy, Suspense } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown, ShieldCheck, Wrench, Repeat } from 'lucide-react';
 import heroPhoto from '../assets/photos/hero.jpg';
 import TextReveal from './ui/TextReveal';
 import Magnetic from './ui/Magnetic';
+// Three.js is heavy — load it only when the hero actually renders.
+const TotalStation3D = lazy(() => import('./TotalStation3D'));
 
 const float = {
   hidden: { opacity: 0, y: 20 },
@@ -37,9 +39,10 @@ export default function HeroSection() {
       {/* Content — parallax layer (opposite drift + fade) */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 w-full pt-28 pb-24 lg:pt-36 lg:pb-32"
+        className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 w-full pt-28 pb-24 lg:pt-32 lg:pb-28"
       >
-        <div className="max-w-3xl">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-6 items-center">
+        <div className="max-w-2xl">
           {/* Badge */}
           <motion.div
             custom={0.2} variants={float} initial="hidden" animate="visible"
@@ -94,10 +97,29 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
+        {/* 3D instrument */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="relative h-[340px] sm:h-[420px] lg:h-[560px] order-first lg:order-none"
+        >
+          <Suspense fallback={<div className="w-full h-full" />}>
+            <TotalStation3D className="w-full h-full" />
+          </Suspense>
+          <p
+            className="absolute bottom-0 right-0 font-mono text-[9px] tracking-wider"
+            style={{ color: 'rgba(255,255,255,0.22)' }}
+          >
+            Model 3D: TS02 Leica — Amin Ranjbari (CC BY)
+          </p>
+        </motion.div>
+        </div>
+
         {/* Floating info cards */}
         <motion.div
           custom={1.3} variants={float} initial="hidden" animate="visible"
-          className="hidden lg:flex absolute bottom-16 right-10 gap-4"
+          className="hidden xl:flex absolute bottom-10 left-10 gap-4"
         >
           {[
             { Icon: Repeat,      label: 'Layanan', value: 'Sewa & Jual-Beli' },

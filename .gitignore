@@ -27,3 +27,6 @@ dist-ssr
 .claude/skills/
 __pycache__/
 *.pyc
+
+# Reference video, not part of the site
+*.mp4
