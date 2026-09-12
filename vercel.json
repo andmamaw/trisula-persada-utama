@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/((?!frames/).*)", "destination": "/index.html" }
+    { "source": "/((?!hero/|assets/).*)", "destination": "/index.html" }
   ]
 }
