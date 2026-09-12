@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { MapPin, Mail, Phone, Clock, ArrowUpRight } from 'lucide-react';
 import logoWordmark from '../assets/brand/logo-wordmark-light.png';
 
@@ -23,16 +24,16 @@ const SocialIcons = {
 
 const cols = {
   Layanan: [
-    { label: 'Sewa Alat Geodesi', href: '#layanan' },
-    { label: 'Jual & Beli Alat', href: '#layanan' },
-    { label: 'Servis (Perbaikan)', href: '#layanan' },
-    { label: 'Kalibrasi', href: '#layanan' },
+    { label: 'Sewa Alat Geodesi', to: '/layanan' },
+    { label: 'Jual & Beli Alat', to: '/layanan' },
+    { label: 'Servis (Perbaikan)', to: '/layanan' },
+    { label: 'Kalibrasi', to: '/layanan' },
   ],
   Perusahaan: [
-    { label: 'Tentang Kami', href: '#tentang' },
-    { label: 'Visi & Misi', href: '#tentang' },
-    { label: 'Alur Kerja', href: '#alur-kerja' },
-    { label: 'Proyek Kami', href: '#proyek' },
+    { label: 'Tentang Kami', to: '/tentang' },
+    { label: 'Visi & Misi', to: '/tentang' },
+    { label: 'Alur Kerja', to: '/alur-kerja' },
+    { label: 'Proyek Kami', to: '/proyek' },
   ],
 };
 
@@ -99,16 +100,16 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="group inline-flex items-center gap-1 text-[13px] transition-colors duration-200"
+                    <Link
+                      to={link.to}
+                      className="group inline-flex items-center gap-1 text-[13px] transition-colors duration-200 no-underline"
                       style={{ color: 'rgba(220,236,225,0.6)' }}
                       onMouseEnter={e => e.currentTarget.style.color = '#8fcba4'}
                       onMouseLeave={e => e.currentTarget.style.color = 'rgba(220,236,225,0.6)'}
                     >
                       {link.label}
                       <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 transition-opacity"/>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

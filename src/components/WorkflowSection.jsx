@@ -48,7 +48,7 @@ const flows = [
   },
 ];
 
-export default function WorkflowSection() {
+export default function WorkflowSection({ hideHeader = false }) {
   const [active, setActive] = useState(0);
   const flow = flows[active];
 
@@ -60,6 +60,7 @@ export default function WorkflowSection() {
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
         {/* Header */}
+        {!hideHeader && (
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,6 +77,7 @@ export default function WorkflowSection() {
             Setiap layanan kami mengikuti alur kerja terstruktur agar hasil dan waktu pengerjaan dapat diandalkan.
           </p>
         </motion.div>
+        )}
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">

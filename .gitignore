@@ -30,3 +30,5 @@ __pycache__/
 
 # Reference video, not part of the site
 *.mp4
+# ...except the hero footage the landing page actually plays
+!public/hero/*.mp4

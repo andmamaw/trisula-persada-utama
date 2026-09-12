@@ -74,12 +74,13 @@ const cardV = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22,1,0.36,1] } },
 };
 
-export default function ServicesSection() {
+export default function ServicesSection({ hideHeader = false }) {
   return (
     <section id="layanan" style={{ background: '#f7faf8' }} className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
 
         {/* Header */}
+        {!hideHeader && (
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -98,6 +99,7 @@ export default function ServicesSection() {
             Sebagai penyedia solusi menyeluruh, kami menawarkan berbagai layanan untuk menunjang kebutuhan proyek pemetaan dan pengukuran Anda.
           </p>
         </motion.div>
+        )}
 
         {/* Cards */}
         <motion.div

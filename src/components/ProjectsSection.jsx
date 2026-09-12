@@ -53,7 +53,7 @@ const PlaceholderVisual = () => (
   </div>
 );
 
-export default function ProjectsSection() {
+export default function ProjectsSection({ hideHeader = false }) {
   return (
     <section
       id="proyek"
@@ -62,19 +62,21 @@ export default function ProjectsSection() {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-14"
-        >
-          <p className="section-label mb-3">Proyek Kami</p>
-          <div className="section-divider mb-5" />
-          <h2 className="heading-lg text-slate-900" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
-            Kepercayaan yang <span className="text-gradient">Terbukti di Lapangan</span>
-          </h2>
-        </motion.div>
+        {!hideHeader && (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mb-14"
+          >
+            <p className="section-label mb-3">Proyek Kami</p>
+            <div className="section-divider mb-5" />
+            <h2 className="heading-lg text-slate-900" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
+              Kepercayaan yang <span className="text-gradient">Terbukti di Lapangan</span>
+            </h2>
+          </motion.div>
+        )}
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 gap-6">

@@ -1,32 +1,38 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import logoMark from '../assets/brand/logo-mark-dark.png';
 import Magnetic from './ui/Magnetic';
 
 const links = [
-  { name: 'Beranda',     href: '#beranda' },
-  { name: 'Layanan',     href: '#layanan' },
-  { name: 'Tentang Kami',href: '#tentang' },
-  { name: 'Alur Kerja',  href: '#alur-kerja' },
-  { name: 'Proyek',      href: '#proyek' },
-  { name: 'Kontak',      href: '#kontak' },
+  { name: 'Beranda',      to: '/' },
+  { name: 'Layanan',      to: '/layanan' },
+  { name: 'Tentang Kami', to: '/tentang' },
+  { name: 'Alur Kerja',   to: '/alur-kerja' },
+  { name: 'Proyek',       to: '/proyek' },
+  { name: 'Kontak',       hash: '#kontak' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
+    fn();
     window.addEventListener('scroll', fn, { passive: true });
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const go = (e, href) => {
+  useEffect(() => setOpen(false), [location.pathname]);
+
+  // the contact block sits at the bottom of every page, so it stays an anchor
+  const goHash = (e, hash) => {
     e.preventDefault();
     setOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -46,11 +52,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-[68px] lg:h-20">
 
           {/* Logo */}
-          <a
-            href="#beranda"
-            onClick={(e) => go(e, '#beranda')}
-            className="flex items-center gap-3 no-underline group"
-          >
+          <Link to="/" className="flex items-center gap-3 no-underline group">
             <img src={logoMark} alt="Trisula Persada Utama" className="h-9 w-9 lg:h-10 lg:w-10 object-contain" />
             <div>
               <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: 14, color: '#14201a', letterSpacing: '0.04em', lineHeight: 1.2 }}>
@@ -60,21 +62,45 @@ export default function Navbar() {
                 Solusi Alat Geodesi
               </p>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
-            {links.map((l) => (
-              <a
-                key={l.name}
-                href={l.href}
-                onClick={(e) => go(e, l.href)}
-                className="relative px-3.5 py-2 text-[13.5px] font-medium text-slate-700 hover:text-green-700 transition-colors duration-200 no-underline group"
-              >
-                {l.name}
-                <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] rounded-full bg-green-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
-              </a>
-            ))}
+            {links.map((l) =>
+              l.hash ? (
+                <a
+                  key={l.name}
+                  href={l.hash}
+                  onClick={(e) => goHash(e, l.hash)}
+                  className="relative px-3.5 py-2 text-[13.5px] font-medium text-slate-700 hover:text-green-700 transition-colors duration-200 no-underline group"
+                >
+                  {l.name}
+                  <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] rounded-full bg-green-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                </a>
+              ) : (
+                <NavLink
+                  key={l.name}
+                  to={l.to}
+                  end={l.to === '/'}
+                  className={({ isActive }) =>
+                    `relative px-3.5 py-2 text-[13.5px] font-medium transition-colors duration-200 no-underline group ${
+                      isActive ? 'text-green-700' : 'text-slate-700 hover:text-green-700'
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      {l.name}
+                      <span
+                        className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] rounded-full bg-green-600 transition-transform duration-200 origin-left ${
+                          isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                        }`}
+                      />
+                    </>
+                  )}
+                </NavLink>
+              )
+            )}
           </nav>
 
           {/* Right side */}
@@ -89,7 +115,7 @@ export default function Navbar() {
             <Magnetic>
               <a
                 href="#kontak"
-                onClick={(e) => go(e, '#kontak')}
+                onClick={(e) => goHash(e, '#kontak')}
                 className="btn-primary text-[13px]"
               >
                 Hubungi Kami
@@ -119,22 +145,39 @@ export default function Navbar() {
           >
             <div className="px-5 py-4 space-y-1 max-w-7xl mx-auto">
               {links.map((l, i) => (
-                <motion.a
+                <motion.div
                   key={l.name}
-                  href={l.href}
-                  onClick={(e) => go(e, l.href)}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.04 }}
-                  className="block py-3 px-4 text-sm font-medium text-slate-700 hover:text-green-700 hover:bg-green-50 rounded-xl transition-all no-underline"
                 >
-                  {l.name}
-                </motion.a>
+                  {l.hash ? (
+                    <a
+                      href={l.hash}
+                      onClick={(e) => goHash(e, l.hash)}
+                      className="block py-3 px-4 text-sm font-medium text-slate-700 hover:text-green-700 hover:bg-green-50 rounded-xl transition-all no-underline"
+                    >
+                      {l.name}
+                    </a>
+                  ) : (
+                    <NavLink
+                      to={l.to}
+                      end={l.to === '/'}
+                      className={({ isActive }) =>
+                        `block py-3 px-4 text-sm font-medium rounded-xl transition-all no-underline ${
+                          isActive ? 'text-green-700 bg-green-50' : 'text-slate-700 hover:text-green-700 hover:bg-green-50'
+                        }`
+                      }
+                    >
+                      {l.name}
+                    </NavLink>
+                  )}
+                </motion.div>
               ))}
               <div className="pt-3 pb-2">
                 <a
                   href="#kontak"
-                  onClick={(e) => go(e, '#kontak')}
+                  onClick={(e) => goHash(e, '#kontak')}
                   className="btn-primary w-full justify-center"
                 >
                   Hubungi Kami

@@ -1,38 +1,46 @@
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
-import WhyUsSection from './components/WhyUsSection';
-import StatsSection from './components/StatsSection';
-import AboutSection from './components/AboutSection';
-import WorkflowSection from './components/WorkflowSection';
-import ProjectsSection from './components/ProjectsSection';
-import GallerySection from './components/GallerySection';
-import ClientsSection from './components/ClientsSection';
-import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import ScrollProgress from './components/ui/ScrollProgress';
+import ScrollToTop from './components/ScrollToTop';
+import HomePage from './pages/HomePage';
 import useLenis from './hooks/useLenis';
+
+// the landing page should not carry the detail pages' code or photos
+const LayananPage = lazy(() => import('./pages/LayananPage'));
+const TentangPage = lazy(() => import('./pages/TentangPage'));
+const AlurKerjaPage = lazy(() => import('./pages/AlurKerjaPage'));
+const ProyekPage = lazy(() => import('./pages/ProyekPage'));
+
+function PageLoading() {
+  return <div style={{ minHeight: '70vh', background: '#0d2818' }} />;
+}
 
 export default function App() {
   useLenis();
 
   return (
-    <div className="bg-white text-slate-900 overflow-x-hidden">
-      <ScrollProgress />
-      <Navbar />
-      <HeroSection />
-      <ServicesSection />
-      <WhyUsSection />
-      <StatsSection />
-      <AboutSection />
-      <WorkflowSection />
-      <ProjectsSection />
-      <GallerySection />
-      <ClientsSection />
-      <CTASection />
-      <Footer />
-      <WhatsAppButton />
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      {/* clip, not hidden — `overflow: hidden` would break the hero's sticky stage */}
+      <div className="bg-white text-slate-900 overflow-x-clip">
+        <ScrollProgress />
+        <Navbar />
+        <Suspense fallback={<PageLoading />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/layanan" element={<LayananPage />} />
+            <Route path="/tentang" element={<TentangPage />} />
+            <Route path="/alur-kerja" element={<AlurKerjaPage />} />
+            <Route path="/proyek" element={<ProyekPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </Suspense>
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    </BrowserRouter>
   );
 }
